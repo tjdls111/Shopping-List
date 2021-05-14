@@ -5,50 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping List</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
 
-    <style>
-        body{
-            background-color: #e1e2e1 ;
-            margin: 0;
-        }
-
-        header{
-            text-align: center;
-            background-color: #e1bee7;
-        }
-
-        h1{
-            color:#black;
-        }
-
-        .box {
-            width: 500px;
-            height: 500px;
-            padding: 25px;
-            background-color: #f5f5f6;
-            margin-left:20%;
-        }
-
-        .button{
-            outline: none;
-            background-color: #e1bee7;
-            color: black;
-            font-size: 20px;
-            margin: 16px 0;
-            cursor: pointer;
-            position:fixed;
-            top: 60px;
-            right: 100px;
-        }
-
-        #shoppingItem{
-            cursor: pointer;
-            position:fixed;
-            top: 80px;
-            right: 240px;
-
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -70,54 +29,6 @@
 
     </footer>
     
-    <script>
-        function addName(){
-            const main=document.querySelector('main');
-            const name=document.createElement('h3');
-            const content=document.querySelector('#shoppingItem').value;
-            //name.textContent=content;
-            //main.appendChild(name);
-
-            const item=document.createElement('input');
-            item.setAttribute('type','checkbox');
-            item.setAttribute('value',content);
-            const label=document.createElement('label');
-            label.setAttribute('for',content);
-            label.textContent=`${content}    `;
-            label.setAttribute('id',content);
-            main.appendChild(item);
-            main.appendChild(label);
-        };
-
-        document.addEventListener('change',()=>
-        {
-            const main=document.querySelector('main');
-
-            let itemsCheck=document.querySelectorAll('input[type="checkbox"]');
-            
-            let removeId;
-            let delItem;
-
-            for (let i of itemsCheck){
-                i.addEventListener('change',(event)=>
-                {   
-                    if (event.target.checked){
-                        removeId=event.target.value;
-                        console.log(removeId);
-                        main.removeChild(i);
-                        delItem=document.getElementById(`${removeId}`);
-                        console.log(delItem);
-                        main.removeChild(delItem);
-                    }
-                });
-            }
-
-            //main.removeChild(itemsCheck.querySelector(`#${delItem}`));
-            //main.removeChild(itemsCheck.querySelector(`#${removeId}`))
-        });
-    
-
-    </script>
 </body>
 </html>
 
