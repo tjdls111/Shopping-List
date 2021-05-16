@@ -1,49 +1,50 @@
-function addName(){
-    const main=document.querySelector('main');
-    const name=document.createElement('h3');
-    const content=document.querySelector('#shoppingItem').value;
-    //name.textContent=content;
-    //main.appendChild(name);
+const main=document.querySelector('main');
+const content=document.querySelector('.shoppingItem');
+const add_btn=document.querySelector('.button');
 
-    const item=document.createElement('input');
-    item.setAttribute('type','checkbox');
-    item.setAttribute('value',content);
-    const label=document.createElement('label');
-    label.setAttribute('for',content);
-    label.textContent=`${content}    `;
-    label.setAttribute('id',content);
-    main.appendChild(item);
-    main.appendChild(label);
+function addName() {
+    console.log(content);
 
-    input.value='';
-    input.focus();
-    
-
-};
-
-document.addEventListener('change',()=>
-{
-    const main=document.querySelector('main');
-
-    let itemsCheck=document.querySelectorAll('input[type="checkbox"]');
-    
-    let removeId;
-    let delItem;
-
-    for (let i of itemsCheck){
-        i.addEventListener('change',(event)=>
-        {   
-            if (event.target.checked){
-                removeId=event.target.value;
-                console.log(removeId);
-                main.removeChild(i);
-                delItem=document.getElementById(`${removeId}`);
-                console.log(delItem);
-                main.removeChild(delItem);
-            }
-        });
+    const name=content.value;
+    if (name===''){
+        content.focus();
+        return;
     }
 
-    //main.removeChild(itemsCheck.querySelector(`#${delItem}`));
-    //main.removeChild(itemsCheck.querySelector(`#${removeId}`))
+    const itemRow=document.createElement('div');
+    itemRow.setAttribute('class','item_row');
+
+    const delBtn=document.createElement('input');
+    delBtn.setAttribute('type','checkbox');
+    delBtn.setAttribute('class','checkbox');
+    delBtn.setAttribute('value',name);
+    
+    const label=document.createElement('label');
+    label.setAttribute('for',name);
+    label.textContent=`${content.value}    `;
+    label.setAttribute('id',name);
+    
+    itemRow.appendChild(delBtn);
+    itemRow.appendChild(label);
+    main.appendChild(itemRow);
+
+    content.scrollIntoView({block:"center"});
+    content.value='';
+    content.focus();
+    
+
+}
+
+content.addEventListener('keypress',(event)=>{
+    if (event.key==='Enter'){
+        addName();
+    }
+
+});
+
+main.addEventListener('click', (event)=>{
+    if (event.target.className=='checkbox'){    
+        main.removeChild(event.target.parentElement);
+    }
+
 });

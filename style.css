@@ -6,6 +6,7 @@ body{
 header{
     text-align: center;
     background-color: #e1bee7;
+    border-radius: 15%;
 }
 
 h1{
@@ -20,7 +21,7 @@ h1{
     margin-left:20%;
 }
 
-.button{
+.addBtn{
     outline: none;
     background-color: #e1bee7;
     color: black;
@@ -32,10 +33,13 @@ h1{
     right: 100px;
 }
 
-#shoppingItem{
+.shoppingItem{
+    outline:none;
+    font-size:20px;
+    margin:16px 0;
     cursor: pointer;
     position:fixed;
-    top: 80px;
-    right: 240px;
+    top: 60px;
+    right: 250px;
 
 }
