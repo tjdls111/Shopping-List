@@ -29,10 +29,9 @@ function addName() {
     main.appendChild(itemRow);
 
     content.scrollIntoView({block:"center"});
+
     content.value='';
     content.focus();
-    
-
 }
 
 content.addEventListener('keypress',(event)=>{
@@ -46,5 +45,4 @@ main.addEventListener('click', (event)=>{
     if (event.target.className=='checkbox'){    
         main.removeChild(event.target.parentElement);
     }
-
 });
